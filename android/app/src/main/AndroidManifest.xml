@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jasonetto">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Uncomment below line to enable $util.addressbook -->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <!-- Uncomment below lines to enable $geo.get -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Uncomment below lines to enable $audio.record -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
+        <activity android:name=".seed.Core.JasonViewActivity" android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Uncomment below intent-filter to support custom url schemes -->
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="jason" />
+            </intent-filter>
+
+
+            <!-- Uncomment below intent-filter to support url opening -->
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="oauth" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.commonsware.cwac.cam2.CameraActivity"
+            android:process=":cwac_cam2"
+            android:theme="@style/CameraTheme"/>
+
+        <!-- Uncomment below line and add your Google Maps API key -->
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAlhENKZAdxMkolSuWr5lejHsbhefO9HDU"/>
+
+        <module android:name="seed.Modules.Jasonette.JasonetteModule" />
+
+        <package android:name="seed.Modules.Jasonette.JasonettePackage" />
+
+    </application>
+
+</manifest>
